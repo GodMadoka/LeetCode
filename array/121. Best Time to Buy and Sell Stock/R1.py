@@ -10,11 +10,12 @@ class Solution(object):
         """
         :type prices: List[int]
         :rtype: int
-        """     
-        if len(prices) < 2: return 0
-        dp = [0]
-        minp = prices[0]
-        for i in xrange(1,len(prices)):
-               if minp > prices[i]: minp = prices[i]
-               dp[i] = max(dp[i-1], prices[i] - minp)        
-        return dp[len(prices) - 1]
+        """
+        maxp = 0
+        minp = float('inf')
+        for p in prices:
+        	if p < minp:
+        		minp = p
+        	if p - minp > maxp:
+        		maxp = p - minp
+        return maxp

@@ -49,3 +49,21 @@ class Solution(object):
                premax = cntmax
                premin = cntmin
         return res
+
+class Solution(object):
+    def maxProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        res = nums[0]
+        maxpos = 1
+        maxneg = 1
+        for i in nums:
+        	cntpos = max(maxpos*i,maxneg*i,i)
+        	cntneg = min(maxpos*i,maxneg*i,i)
+        	maxpos = cntpos
+        	maxneg = cntneg
+        	res = max(res,maxpos,i)
+        return res
+
